@@ -432,6 +432,3 @@ The price simulation is an **intentional design choice** that:
 
 The codebase follows best practices for maintainability, security, and scalability.
 
-## License
-
-This project is for educational purposes.
