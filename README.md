@@ -432,3 +432,10 @@ The price simulation is an **intentional design choice** that:
 
 The codebase follows best practices for maintainability, security, and scalability.
 
+## Deployment
+
+This project is currently configured to run in a local development environment.
+The architecture is deployment-ready and can be hosted on platforms like Render,
+Railway, or Vercel if needed.
+
+
