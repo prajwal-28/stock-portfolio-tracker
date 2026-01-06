@@ -2,7 +2,7 @@
 
 A full-stack stock portfolio tracking application with a FastAPI backend. This backend provides RESTful APIs for user authentication and portfolio management, featuring dynamic profit/loss calculations using simulated stock prices.
 
-## Project Overview
+# Project Overview
 
 The Stock Portfolio Tracker is a full-stack web application that allows users to:
 - Register and authenticate securely using JWT tokens
@@ -432,6 +432,3 @@ The price simulation is an **intentional design choice** that:
 
 The codebase follows best practices for maintainability, security, and scalability.
 
-## License
-
-This project is for educational purposes.
