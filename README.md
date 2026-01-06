@@ -1,6 +1,6 @@
 # Stock Portfolio Tracker - Full stack application
 
-A full-stack stock portfolio tracking Application with a FastAPI backend. This backend provides RESTful APIs for user authentication and portfolio management, featuring dynamic profit/loss calculations using simulated stock prices.
+A full-stack stock portfolio tracking application with a FastAPI backend. This backend provides RESTful APIs for user authentication and portfolio management, featuring dynamic profit/loss calculations using simulated stock prices.
 
 # Project Overview
 
