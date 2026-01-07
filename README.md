@@ -434,8 +434,11 @@ The codebase follows best practices for maintainability, security, and scalabili
 
 ## Deployment
 
-This project is currently configured to run in a local development environment.
-The architecture is deployment-ready and can be hosted on platforms like Render,
-Railway, or Vercel if needed.
+## Live Backend API
+
+The FastAPI backend is deployed and publicly accessible:
+
+🔗 https://stock-portfolio-tracker-3ntt.onrender.com/docs
+
 
 
