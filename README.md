@@ -432,8 +432,6 @@ The price simulation is an **intentional design choice** that:
 
 The codebase follows best practices for maintainability, security, and scalability.
 
-## Deployment
-
 ## Live Backend API
 
 The FastAPI backend is deployed and publicly accessible:
