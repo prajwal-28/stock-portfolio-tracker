@@ -19,7 +19,7 @@ app = FastAPI(
 # This allows the frontend to make requests to the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],  # React default ports
+    allow_origins=["http://localhost:3000", "http://localhost:5173", "https://stock-portfolio-tracker-kohl.vercel.app"],  # React default ports
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
