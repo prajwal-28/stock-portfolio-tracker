@@ -19,7 +19,16 @@ app = FastAPI(
 # This allows the frontend to make requests to the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173", "https://stock-portfolio-tracker-khaki.vercel.app"],  # React default ports
+    # Local dev + deployed frontend origins.
+    #
+    # Note: Vercel preview deployments use different subdomains, so we also allow
+    # any `*.vercel.app` origin via `allow_origin_regex`.
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://stock-portfolio-tracker-khaki.vercel.app",
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers

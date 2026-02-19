@@ -57,7 +57,12 @@ const Register = () => {
       if (err.response && err.response.data && err.response.data.detail) {
         setError(err.response.data.detail);
       } else {
-        setError('Registration failed. Please try again.');
+        // If there's no `err.response`, it's usually a network/CORS/baseURL problem in production.
+        // Show a more helpful message so it's easier to diagnose deployments (e.g., Vercel NOT_FOUND).
+        const fallback =
+          err?.message ||
+          'Registration failed. Please check backend URL/CORS and try again.';
+        setError(fallback);
       }
     } finally {
       setLoading(false);
