@@ -16,22 +16,19 @@ app = FastAPI(
 )
 
 # Configure CORS (Cross-Origin Resource Sharing)
-# This allows the frontend to make requests to the backend
+# This allows the frontend to make requests to the backend.
+#
+# NOTE: For this educational portfolio project we allow all origins.
+# This simplifies deployment (Vercel preview URLs, custom domains, etc.)
+# and is safe here because authentication uses JWT in the Authorization header,
+# not cookies. For stricter production security you can replace `"*"` with a
+# specific list of allowed frontend origins.
 app.add_middleware(
     CORSMiddleware,
-    # Local dev + deployed frontend origins.
-    #
-    # Note: Vercel preview deployments use different subdomains, so we also allow
-    # any `*.vercel.app` origin via `allow_origin_regex`.
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "https://stock-portfolio-tracker-eta.vercel.app",
-    ],
-    allow_origin_regex=r"https://.*\.vercel\.app",
-    allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
+    allow_origins=["*"],          # Allow requests from any origin
+    allow_credentials=False,      # Must be False when using wildcard origins
+    allow_methods=["*"],          # Allow all HTTP methods
+    allow_headers=["*"],          # Allow all headers (including Authorization)
 )
 
 
