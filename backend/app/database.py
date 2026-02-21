@@ -114,5 +114,6 @@ def get_database():
     Raises an error if database is not connected.
     """
     if database is None:
-        raise RuntimeError("Database not connected. Make sure MongoDB connection is established.")
+        from fastapi import HTTPException
+        raise HTTPException(status_code=503, detail="Database not connected. Make sure MongoDB connection is established.")
     return database
