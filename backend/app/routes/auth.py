@@ -74,59 +74,51 @@ async def register(user_data: UserRegister, db = Depends(get_database)):
     """
     Register a new user.
     """
-    try:
-        # Check if username already exists
-        existing_user = await db.users.find_one({"username": user_data.username})
-        if existing_user:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Username already registered"
-            )
-        
-        # Check if email already exists
-        existing_email = await db.users.find_one({"email": user_data.email})
-        if existing_email:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Email already registered"
-            )
-        
-        # Hash the password before storing
-        hashed_password = get_password_hash(user_data.password)
-        
-        # Create user document
-        user_doc = {
-            "username": user_data.username,
-            "email": user_data.email,
-            "hashed_password": hashed_password,
-            "created_at": datetime.utcnow()
-        }
-        
-        # Insert user into database
-        result = await db.users.insert_one(user_doc)
-        
-        # Create JWT token
-        # 'sub' (subject) is a standard JWT claim that typically contains the user identifier
-        token_data = {"sub": str(result.inserted_id), "username": user_data.username}
-        access_token = create_access_token(data=token_data)
-    
-    # Return token and user info
-        return TokenResponse(
-            access_token=access_token,
-            token_type="bearer",
-            user=UserResponse(
-                id=str(result.inserted_id),
-                username=user_data.username,
-                email=user_data.email
-            )
-        )
-    except Exception as e:
-        import traceback
-        error_msg = f"{type(e).__name__}: {str(e)}\n{traceback.format_exc()}"
+    # Check if username already exists
+    existing_user = await db.users.find_one({"username": user_data.username})
+    if existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=error_msg
+            detail="Username already registered"
         )
+    
+    # Check if email already exists
+    existing_email = await db.users.find_one({"email": user_data.email})
+    if existing_email:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email already registered"
+        )
+    
+    # Hash the password before storing
+    hashed_password = get_password_hash(user_data.password)
+    
+    # Create user document
+    user_doc = {
+        "username": user_data.username,
+        "email": user_data.email,
+        "hashed_password": hashed_password,
+        "created_at": datetime.utcnow()
+    }
+    
+    # Insert user into database
+    result = await db.users.insert_one(user_doc)
+    
+    # Create JWT token
+    # 'sub' (subject) is a standard JWT claim that typically contains the user identifier
+    token_data = {"sub": str(result.inserted_id), "username": user_data.username}
+    access_token = create_access_token(data=token_data)
+    
+    # Return token and user info
+    return TokenResponse(
+        access_token=access_token,
+        token_type="bearer",
+        user=UserResponse(
+            id=str(result.inserted_id),
+            username=user_data.username,
+            email=user_data.email
+        )
+    )
 
 
 @router.post("/login", response_model=TokenResponse)
