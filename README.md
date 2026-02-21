@@ -20,8 +20,13 @@ The Stock Portfolio Tracker is a full-stack web application that allows users to
 - **Motor** - Async MongoDB driver for Python
 - **JWT (python-jose)** - JSON Web Token authentication
 - **Pydantic** - Data validation and serialization
-- **Bcrypt (passlib)** - Password hashing
+- **Bcrypt** - Password hashing
 - **Uvicorn** - ASGI server
+### Frontend
+- **React** - UI library for building the application
+- **Vite** - Fast frontend build tool
+- **React Router** - Client-side navigation
+- **Axios** - HTTP client for API requests
 
 ### Testing
 - **Pytest** - Testing framework
@@ -432,11 +437,10 @@ The price simulation is an **intentional design choice** that:
 
 The codebase follows best practices for maintainability, security, and scalability.
 
-## Live Backend API
+## Live Deployment
 
-The FastAPI backend is deployed and publicly accessible:
+The full-stack application is currently deployed and publicly accessible:
 
-🔗 https://stock-portfolio-tracker-3ntt.onrender.com/docs
-
-
+- **Frontend Application (Vercel)**: [https://stock-portfolio-tracker-eta.vercel.app](https://stock-portfolio-tracker-eta.vercel.app)
+- **Backend API Docs (Render)**: [https://stock-portfolio-tracker-3ntt.onrender.com/docs](https://stock-portfolio-tracker-3ntt.onrender.com/docs)
 
